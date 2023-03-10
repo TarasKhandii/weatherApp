@@ -36,7 +36,6 @@ const HomeScreen: RootStackScreenType<SCREENS.home> = ({navigation}) => {
   const INITIAL_DATE = new Date().toDateString();
   const [selected, setSelected] = useState(INITIAL_DATE);
   const [location, setLocation] = useState('');
-  console.log('loca', location);
 
   const navHandler = () => {
     navigation.navigate(SCREENS.forecastScreen, {geoLocation: location});

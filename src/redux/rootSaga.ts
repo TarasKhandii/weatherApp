@@ -41,7 +41,6 @@ function* currentWeatherWorker(action: CurrentWeatherApiAction): any {
     yield put(fetchCurrentRequestSuccess(res.data));
     yield put(loadingWeather(false));
   } catch (error) {
-    console.log('====>', error);
     yield put(loadingWeather(false));
     Alert.alert('Something went wrong');
   }

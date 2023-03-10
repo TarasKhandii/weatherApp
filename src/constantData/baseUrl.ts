@@ -1,2 +1,1 @@
-// export const baseURL = 'https://weatherapi-com.p.rapidapi.com/';
-export const baseURL = 'http://api.weatherapi.com/v1';
+export const baseURL = 'https://api.weatherapi.com/v1';
