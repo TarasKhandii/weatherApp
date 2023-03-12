@@ -1,10 +1,10 @@
 /* -------------------------------- Libraries ------------------------------- */
 import axios from 'axios';
-/* ------------------------------ Constant Data ----------------------------- */
-import {baseURL} from '../constantData/baseUrl';
+/* ----------------------------------- Env ---------------------------------- */
+import {APP_BASE_URL} from '@env';
 
 const instance = axios.create({
-  baseURL,
+  baseURL: APP_BASE_URL,
 });
 
 export default instance;

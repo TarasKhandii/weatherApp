@@ -13,14 +13,14 @@ import {
 
 /* --------------------------------- Current -------------------------------- */
 
-export const loadingWeather = (
+export const loadingCurrentWeather = (
   payload: boolean,
 ): CurrentWeatherLoadingAction => ({
   type: CurrentWeatherActionTypes.CURRENT__LOADING__WEATHER,
   payload,
 });
 
-export const fetchCurrentRequest = (payload: {
+export const fetchCurrentWeatherRequest = (payload: {
   q: string;
   dt: string;
 }): CurrentWeatherApiAction => {
@@ -29,7 +29,7 @@ export const fetchCurrentRequest = (payload: {
     payload,
   };
 };
-export const fetchCurrentRequestSuccess = (
+export const fetchCurrentWeatherRequestSuccess = (
   payload: CurrentWeatherData,
 ): CurrentWeatherApiSuccessAction => {
   return {

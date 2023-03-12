@@ -17,9 +17,11 @@ export const forecastWeatherReducer = (
     case ForecastActionTypes.FORECAST__LOADING: {
       return {...state, loading: action.payload};
     }
+
     case ForecastActionTypes.GET__WEATHER__FORECAST__API__SUCCESS: {
       return {...state, res: action.payload};
     }
+
     default:
       return state;
   }

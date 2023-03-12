@@ -24,7 +24,7 @@ import WeatherConditions from '../../components/weatherСonditions';
 import {SCREENS} from '../../navigation/screens';
 import {RootStackScreenType} from '../../navigation/navigationTypes';
 /* ---------------------------------- Redux --------------------------------- */
-import {fetchCurrentRequest} from '../../redux/actions/actions';
+import {fetchCurrentWeatherRequest} from '../../redux/actions/actions';
 import {useTypedSelector} from '../../redux/hooks/useTypedSelector';
 import {DateData} from 'react-native-calendars';
 import {checkLocationPermission} from '../../utils/LocalPermissions';
@@ -37,7 +37,7 @@ const HomeScreen: RootStackScreenType<SCREENS.home> = ({navigation}) => {
   const [selected, setSelected] = useState(INITIAL_DATE);
   const [location, setLocation] = useState('');
 
-  const navHandler = () => {
+  const navForecastHandler = () => {
     navigation.navigate(SCREENS.forecastScreen, {geoLocation: location});
   };
 
@@ -53,7 +53,7 @@ const HomeScreen: RootStackScreenType<SCREENS.home> = ({navigation}) => {
     if (currentLocation) {
       setLocation(currentLocation);
       dispatch(
-        fetchCurrentRequest({
+        fetchCurrentWeatherRequest({
           q: currentLocation,
           dt: moment(selected).format('yyyy-MM-DD'),
         }),
@@ -81,7 +81,7 @@ const HomeScreen: RootStackScreenType<SCREENS.home> = ({navigation}) => {
     (selected?: DateData) => {
       setSelected(selected?.dateString || INITIAL_DATE);
       dispatch(
-        fetchCurrentRequest({
+        fetchCurrentWeatherRequest({
           q: location,
           dt: moment(selected?.dateString).format('YYYY-MM-DD'),
         }),
@@ -93,7 +93,7 @@ const HomeScreen: RootStackScreenType<SCREENS.home> = ({navigation}) => {
   return (
     <SafeAreaView style={styles.homeScreens}>
       {(loading && !response) || !response ? (
-        <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
+        <View style={styles.loader}>
           <ActivityIndicator size="large" color="blue" />
         </View>
       ) : (
@@ -101,10 +101,7 @@ const HomeScreen: RootStackScreenType<SCREENS.home> = ({navigation}) => {
           <Text style={styles.title}>{`${response?.location?.name}`}</Text>
           <View style={styles.container}>
             <Image
-              style={{
-                height: 80,
-                width: 80,
-              }}
+              style={styles.image}
               source={{
                 uri: `https:${response?.forecast?.forecastday?.[0]?.day?.condition?.icon}`,
               }}
@@ -145,7 +142,7 @@ const HomeScreen: RootStackScreenType<SCREENS.home> = ({navigation}) => {
             </View>
           </View>
           <View style={styles.btn}>
-            <Btn title="Next 5 Days" onPress={navHandler} />
+            <Btn title="Next 3 Days" onPress={navForecastHandler} />
           </View>
           <CalendarComponent
             state={selected}

@@ -62,5 +62,15 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     marginRight: dw(26),
   },
+  loader: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  image: {
+    height: 80,
+    width: 80,
+  },
 });
+
 export default styles;

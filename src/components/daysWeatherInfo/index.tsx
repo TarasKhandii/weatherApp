@@ -4,8 +4,8 @@ import {Text, View} from 'react-native';
 /* -------------------------------- Libraries ------------------------------- */
 import {SvgXml} from 'react-native-svg';
 /* ---------------------------------- Style --------------------------------- */
-
 import styles from './styles';
+
 interface DaysWeatherProps {
   day: string;
   temperature: string;

@@ -17,9 +17,11 @@ export const currentWeatherReducer = (
     case CurrentWeatherActionTypes.CURRENT__LOADING__WEATHER: {
       return {...state, loading: action.payload};
     }
+
     case CurrentWeatherActionTypes.GET__WEATHER__CURRENT__API__SUCCESS: {
       return {...state, response: action.payload};
     }
+
     default:
       return state;
   }

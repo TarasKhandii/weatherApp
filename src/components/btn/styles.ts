@@ -17,4 +17,5 @@ const styles = StyleSheet.create({
     color: COLORS.black,
   },
 });
+
 export default styles;

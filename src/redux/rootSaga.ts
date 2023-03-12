@@ -7,9 +7,10 @@ import {getCurrentWeather} from '../api/currentWeather';
 import {getForecastWeather} from '../api/forecastWeather';
 /* --------------------------------- Redux; --------------------------------- */
 import {
-  fetchCurrentRequestSuccess,
+  fetchCurrentWeatherRequestSuccess,
+  fetchForecastRequestSuccess,
   forecastLoading,
-  loadingWeather,
+  loadingCurrentWeather,
 } from './actions/actions';
 import {
   CurrentWeatherActionTypes,
@@ -32,16 +33,16 @@ function* currentWeatherWatcher() {
 
 function* currentWeatherWorker(action: CurrentWeatherApiAction): any {
   try {
-    yield put(loadingWeather(true));
+    yield put(loadingCurrentWeather(true));
     const res: AxiosResponse<CurrentWeatherData> = yield call(
       getCurrentWeather,
       action.payload.q,
       action.payload.dt,
     );
-    yield put(fetchCurrentRequestSuccess(res.data));
-    yield put(loadingWeather(false));
+    yield put(fetchCurrentWeatherRequestSuccess(res.data));
+    yield put(loadingCurrentWeather(false));
   } catch (error) {
-    yield put(loadingWeather(false));
+    yield put(loadingCurrentWeather(false));
     Alert.alert('Something went wrong');
   }
 }
@@ -63,10 +64,7 @@ function* forecastWeatherWorker(action: ForecastApiAction): any {
       action.payload.q,
       action.payload.days,
     );
-    yield put({
-      type: ForecastActionTypes.GET__WEATHER__FORECAST__API__SUCCESS,
-      payload: res.data,
-    });
+    yield put(fetchForecastRequestSuccess(res.data));
     yield put(forecastLoading(false));
   } catch (error) {
     yield put(forecastLoading(false));

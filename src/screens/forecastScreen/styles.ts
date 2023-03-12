@@ -27,13 +27,16 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   block: {
-    // flex: 1,
-    // width: 100,
-    // height: 100,
     marginTop: 40,
     backgroundColor: '#1E90FF',
     borderRadius: 20,
     marginHorizontal: dw(20),
   },
+  loader: {
+    alignItems: 'center',
+    marginTop: 50,
+    flex: 1,
+  },
 });
+
 export default styles;

@@ -30,4 +30,5 @@ const styles = StyleSheet.create({
     color: COLORS.white,
   },
 });
+
 export default styles;

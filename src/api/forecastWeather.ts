@@ -2,6 +2,8 @@
 import axios from './axios';
 /* ---------------------------------- Redux --------------------------------- */
 import {ForecastWeatherData} from '../redux/types/forecastWeatherTypes';
+/* ----------------------------------- Env ---------------------------------- */
+import {API_KEY} from '@env';
 
 export const getForecastWeather = (q: string, days: string) => {
   return axios<ForecastWeatherData>({
@@ -9,7 +11,7 @@ export const getForecastWeather = (q: string, days: string) => {
     url: '/forecast.json',
     params: {q, days},
     headers: {
-      key: '5d3596858a504550a1c230357232602',
+      key: API_KEY,
     },
   });
 };

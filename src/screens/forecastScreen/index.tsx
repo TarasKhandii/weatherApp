@@ -43,10 +43,11 @@ const ForecastScreen: RootStackScreenType<SCREENS.forecastScreen> = ({
   useEffect(() => {
     dispatch(fetchForecastRequest({q: geoLocation, days: '5'}));
   }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       {loading ? (
-        <View style={{alignItems: 'center', marginTop: 50, flex: 1}}>
+        <View style={styles.loader}>
           <ActivityIndicator size="large" color="blue" />
         </View>
       ) : (

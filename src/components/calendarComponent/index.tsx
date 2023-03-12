@@ -20,6 +20,7 @@ const CalendarComponent: React.FC<CalendarProps> = ({
   const onDayPress = useCallback((day: DateData) => {
     setState(day);
   }, []);
+
   const marked = useMemo(() => {
     return {
       [state]: {

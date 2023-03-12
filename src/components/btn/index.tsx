@@ -18,4 +18,5 @@ const Btn: React.FC<BtnProps> = ({title, onPress}) => {
     </TouchableOpacity>
   );
 };
+
 export default Btn;
